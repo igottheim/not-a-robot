@@ -14,14 +14,15 @@ myuser = client.user.get_me()
 chats = client.chats.list_all()
 grouplist = list(groups.autopage())
 group1messages = grouplist[0].messages.list()
-
+oldmessage = grouplist[0].messages.list_all()
 count = 0
 for x in group1messages:
     print(x)
     count+=1
 
-print(count)
-
+#
+# for message in oldmessage:
+#    print(message.text)
 
 
 
@@ -61,11 +62,11 @@ if __name__ == '__main__':
 
     string = "Good Morning. WOW there have been " + str(totalMessages) + " messages in this group"
 
-    string1 = "I LUV STEAK"
+    string1 = "I have gained access to the groupMe's oldest messages. Be warned :)"
     print(string)
 
     data = {
-        "text": string, "bot_id": botId
+        "text": string1, "bot_id": botId
     }
 
 
