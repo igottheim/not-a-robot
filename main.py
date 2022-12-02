@@ -1,19 +1,28 @@
 import requests
 import json
 import sys
+import groupy
+
 from groupy.client import Client
 from datetime import datetime, timezone
 from creds import token, refgroup
 
 client = Client.from_token(token)
 groups = client.groups.list()
+
 myuser = client.user.get_me()
 chats = client.chats.list_all()
 grouplist = list(groups.autopage())
+group1messages = grouplist[0].messages.list()
+
+count = 0
+for x in group1messages:
+    print(x)
+    count+=1
+
+print(count)
 
 
-
-print(grouplist[1].messages)
 
 
 for x in grouplist:
@@ -25,12 +34,12 @@ for x in grouplist:
         break
 
 print(messageData)
-print(messageData['preview'])
+# print(messageData['preview'])
 
 totalMessages = messageData['count']
 
 for x in memberData:
-    print(x['nickname'])
+    print(x['image_url'])
 
 # print(memberData)
 # for key, value in group.data.items():
@@ -50,13 +59,13 @@ if __name__ == '__main__':
     # weatherJson = json.loads(weatherAPIResponse)
     # print(weatherJson)
 
-    string = "WOW there have been " + str(totalMessages) + " messages in this group"
+    string = "Good Morning. WOW there have been " + str(totalMessages) + " messages in this group"
 
     string1 = "I LUV STEAK"
     print(string)
 
     data = {
-        "text": string1, "bot_id": botId
+        "text": string, "bot_id": botId
     }
 
 
